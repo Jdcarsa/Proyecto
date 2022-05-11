@@ -28,13 +28,13 @@ function botonesControl() {
 //----------------------------------------------
 function SliderEntrada() {
   //Creacion de slider de  masa
-  entradaM = createSlider(1, 100, 1, 1);
+  entradaM = createSlider(1, 30, 1, 1);
   entradaM.position(140, 160);
   //----------------------------------------------
 
   //--------------------------------------------------
   //Creacion de slider de constante k
-  entradaK = createSlider(1, 300, 1, 1);
+  entradaK = createSlider(1, 50, 1, 1);
   entradaK.position(450, 160);
   //----------------------------------------------
   //Creacion de slider de phi
@@ -42,7 +42,7 @@ function SliderEntrada() {
   entradaF.position(900, 160);
   //----------------------------------------------}
   //Creacion de slider de amplitud
-  entradaA = createSlider(1, 500, 1, 1);
+  entradaA = createSlider(1, 300, 1, 1);
   entradaA.position(700, 160);
 }
 //----------------------------------------------
@@ -58,8 +58,8 @@ function calcular() {
   text("Masa(kg) = " + valorM, 0, -50);
   text("Constante de elasticidad (N/M) = " + valorK, 230, -50);
   W0 = sqrt((2 * valorK) / (3 * valorM));
-  text("Wo =   " + W0.toFixed(2), 0, 250);
-  text("Desfase = " + Fase, 740, -50);
+  text("Wo =   " + W0.toFixed(2) + "rad/seg", 600, 120);
+  text("Desfase(rad) = " + Fase, 740, -50);
 }
 
 //----------------------------------------------
@@ -72,6 +72,7 @@ function draw() {
     //Se debe detener la animacion para ingresar los valores de m y k sin que ocurra un error
     movimiento();
   }
+ 
 }
 //----------------------------------------------
 function entorno() {
@@ -88,7 +89,7 @@ function entorno() {
   rect(-200, 395, 30, -100);
   fill(255);
   textSize(30);
-  text("Simulación M.A.S", 380, -160);
+  text("Simulación ", 380, -160);
 }
 //----------------------------------------------
 
@@ -104,10 +105,11 @@ function movimiento() {
   fill(255);
   t += timer;
   textSize(15);
-  text("x(t) = " + x.toFixed(2), 0, 120);
+  text("x(t) = " + x.toFixed(2) + " m ", 0, 120);
   let v = map(-1 * W0 * sin(W0 * t + 20), -1, 1, -valorA, valorA);
-  text("v(t) = " + v.toFixed(2), 0, 160);
+  text("v(t) = " + v.toFixed(2) + " m/s ", 200, 120);
   let a = map(-1 * sq(W0) * cos(W0 * t + 20), -1, 1, -valorA, valorA);
-  text("a(t) = " + a.toFixed(2), 0, 200);
+  text("a(t) = " + a.toFixed(2) + " m/s^2 ", 400, 120);
 }
 //----------------------------------------------
+
