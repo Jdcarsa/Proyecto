@@ -3,33 +3,35 @@ let button,
   masa,
   k,
   simular = false,
-  timer = 0.005,
+  timer = 0.05,
   simularV2 = false,
-  t = 0;
+  t = 0,
+  img, piso,circulo,piso2,resor;
 var valorK = 0,
   valorM = 0,
   valorA = 0,
-  W0,
+  W0, xc=0 ,
   Fase = 0;
-
-
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
   botonesControl();
-  SliderEntrada()
-  
+  SliderEntrada();
+  img = loadImage("Fondos/pared.png");
+  piso = loadImage("Fondos/piso.png");
+  piso2 = loadImage("Fondos/piso2.png");
+  cir =loadImage("Fondos/circulo.png");
+  resor = loadImage("Fondos/prueba.png")
 }
 //----------------------------------------------
 
 function botonesControl() {
   button = createButton("Simular");
   button.position(500, 60);
-  button.mousePressed(() => ((simular = true)));
+  button.mousePressed(() => (simular = true));
   stop = createButton("Reiniciar");
   stop.position(800, 60);
-  stop.mousePressed(() => ((window.location.reload())) );
-
+  stop.mousePressed(() => window.location.reload());
 }
 //----------------------------------------------
 function SliderEntrada() {
@@ -40,7 +42,7 @@ function SliderEntrada() {
 
   //--------------------------------------------------
   //Creacion de slider de constante k
-  entradaK = createSlider(1, 50, 1, 1);
+  entradaK = createSlider(1, 100, 1, 1);
   entradaK.position(450, 160);
   //----------------------------------------------
   //Creacion de slider de phi
@@ -58,19 +60,15 @@ function obtener() {
   valorK = entradaK.value();
   valorA = entradaA.value();
   Fase = entradaF.value();
-  
-
 }
 //----------------------------------------------
-
-
 
 //----------------------------------------------
 
 function draw() {
   entorno();
   obtener();
-  // condicional que contrala cuando se ejecutara el programa 
+  // condicional que contrala cuando se ejecutara el programa
   if (simular) {
     movimiento();
   }
@@ -78,16 +76,17 @@ function draw() {
 //----------------------------------------------
 function entorno() {
   // disenio de todo el entorno del programa
-  background(225);
+  background(150);
   translate(200, 200);
-  stroke(0);
-  fill(150, 238, 33);
   // Rectangulo verde
-  rect(-210, 395, 1368, 45);
-  fill(268, 238, 33);
-  // Rectangulos amarillos
-  rect(1100, 395, 50, -100);
-  rect(-200, 395, 30, -100);
+  image(piso, -380, 368);
+  piso.resize(1800, 100);
+  image(piso2, -380, 368);
+  piso2.resize(1500, 100);
+  image(img, -230, 285);
+  img.resize(80, 120);
+  image(img, 1100, 285);
+  img.resize(80, 120);
   fill(0);
   textSize(30);
   text("Simulación M.A.S", 380, -160);
@@ -102,12 +101,19 @@ function entorno() {
 
 function movimiento() {
   //dibuja la linea y el ciruclo , y controla su movimiento
-  let x = map(cos(W0 * t + Fase), -1, 1, -valorA, valorA);
-  stroke(0);
-  fill(129, 127, 256);
-  line(-170, 370, x + 380, 370);
-  stroke(0, 0, 250);
-  circle(x + 400, 370, 48);
+  const x = map(cos(W0 * t + Fase), -1, 1, -valorA, valorA);
+  stroke(40,120,220);
+  fill(100, 0, 250);
+  if (!isNaN(x)){
+    //SI ES UN NUMERO HAGA ESTO
+    image(resor, 160, 345, 225+x, 50);
+    //image(url, posX, posY, width, height)
+    //resor.resize(225+x, 90);
+  }
+  line(-157, 370, x + 380, 370);
+  image(cir, x+372, 345);
+  cir.resize(50, 50);
+  //circle(x + 400, 370, 48);
   stroke(0);
   fill(0);
   t += timer;
@@ -117,4 +123,3 @@ function movimiento() {
   text("T =   " + T.toFixed(2) + "seg", 600, 120);
 }
 //----------------------------------------------
-

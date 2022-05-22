@@ -24,7 +24,7 @@ function setup() {
   piso = loadImage("Fondos/piso.png");
   piso2 = loadImage("Fondos/piso2.png");
   cir =loadImage("Fondos/circulo.png");
-  resor = loadImage("Fondos/resorte.png")
+  resor = loadImage("Fondos/prueba.png")
 
 }
 
@@ -95,12 +95,6 @@ function entorno() {
   piso.resize(1800, 100);
   image(piso2, -380, 368);
   piso2.resize(1500, 100);
-  // Rectangulo verde
- // rect(-210, 395, 1368, 45);
-  fill(268, 238, 33);
-  // Rectangulos amarillos
- // rect(1100, 395, 50, -100);
-  //rect(-200, 395, 30, -100);
   image(img, -230, 285);
   img.resize(80, 120);
   image(img, 1100, 285);
@@ -143,11 +137,19 @@ function movimientoV2() {
   stroke(0, 0, 250);
   image(cir, x+372, 345);
   cir.resize(50, 50);
+  if (!isNaN(x)){
+    //SI ES UN NUMERO HAGA ESTO
+    
+    image(resor, 160, 345, 225+x, 50);
+    
+    //image(url, posX, posY, width, height)
+    //resor.resize(225+x, 90);
+  }
   //circle(x + 400, 370, 48);
   //Liquido idea
   stroke(0, 120, 240, 70);
   fill(0, 120, 240, 70);
-  rect(-160, 395, 1270, -60);
+  rect(-158, 395, 1264, -60);
   //
   t += timer;
 }
