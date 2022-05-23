@@ -3,7 +3,7 @@ let entradaM,
   k,
   timer = 0.001,
   simularV2 = false,
-  t = 0,x,img, piso,circulo,piso2,resor;
+  t = 0,x,img, piso,circulo,piso2,resor,flecha,ub;
 var valorK = 0,
   valorM = 0,
   valorA = 0,
@@ -13,22 +13,30 @@ var valorK = 0,
   resta,
   M1,
   M2;
-let imagen;
+
 
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
   botonesControl();
   SliderEntrada();
+  fondos();
+
+}
+
+function fondos()
+{
   img = loadImage("Fondos/pared.png");
   piso = loadImage("Fondos/piso.png");
   piso2 = loadImage("Fondos/piso2.png");
   cir =loadImage("Fondos/circulo.png");
-  resor = loadImage("Fondos/prueba.png")
+  resor = loadImage("Fondos/prueba.png");
+  liquid = loadImage("Fondos/Liquido.png")
+  flecha = loadImage("Fondos/flecha.png")
 
+  //ub = createA('GitHub\Proyecto\Proyecto M.A.S imagenes', "Emulador");
+  //ub.position(100,100)
 }
-
-
   
 
 //----------------------------------------------
@@ -143,9 +151,11 @@ function movimientoV2() {
     image(resor, 160, 345, 225+x, 50);
     
     //image(url, posX, posY, width, height)
-    //resor.resize(225+x, 90);
+
   }
-  //circle(x + 400, 370, 48);
+ // tint(255, 127);
+   //image(liquid,-160,315,1264,80)
+   //noTint()
   //Liquido idea
   stroke(0, 120, 240, 70);
   fill(0, 120, 240, 70);
