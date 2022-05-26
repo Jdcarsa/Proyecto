@@ -30,6 +30,7 @@ function imagenes() {
   piso = loadImage("Fondos M.A.S/pisodef.png");
   cir = loadImage("Fondos M.A.S/circulo.png");
   resor = loadImage("Fondos M.A.S/prueba.png");
+  bg = loadImage("/Fondos M.A.S/background.jpg")
 }
 //----------------------------------------------
 
@@ -84,12 +85,13 @@ function draw() {
 //----------------------------------------------
 function entorno() {
   // disenio de todo el entorno del programa
-  background(255);
+  background(bg);
   translate(200, 200);
   image(piso, -380, 368, 1800, 100);
   image(img, -230, 285, 80, 120);
   image(img, 1100, 285, 80, 120);
-  fill(0);
+  fill(255);
+  stroke(255)
   textSize(30);
   text("Simulación M.A.S", 380, -165);
   textSize(15);

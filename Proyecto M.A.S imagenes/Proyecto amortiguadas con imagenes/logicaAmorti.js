@@ -29,11 +29,12 @@ function setup() {
 }
 
 function fondos() {
-  img = loadImage("Fondos amortiguadas/pared.png");
-  piso = loadImage("Fondos amortiguadas/pisodef.png");
-  cir = loadImage("Fondos amortiguadas/circulo.png");
-  resor = loadImage("Fondos amortiguadas/resorte.png");
-  liquid = loadImage("Fondos amortiguadas/gif.gif");
+  img = loadImage("/Fondos M.A.S/pared.png");
+  piso = loadImage("/Fondos M.A.S/pisodef.png");
+  cir = loadImage("/Fondos M.A.S/circulo.png");
+  resor = loadImage("/Fondos M.A.S/prueba.png");
+  liquid = loadImage("/Fondos M.A.S/gif.gif");
+  bg = loadImage("/Fondos M.A.S/background.jpg")
 }
 
 //----------------------------------------------
@@ -89,12 +90,13 @@ function draw() {
 }
 //----------------------------------------------
 function entorno() {
-  background(255);
+  background(bg);
   translate(200, 200);
   image(piso, -380, 368, 1800, 100);
   image(img, -230, 285, 80, 120);
   image(img, 1100, 285, 80, 120);
-  fill(0);
+  fill(255);
+  stroke(255)
   textSize(30);
   text("Simulacion de oscilaciones amortiguadas ", 230, -160);
   textSize(15);

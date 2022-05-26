@@ -29,11 +29,12 @@ function setup() {
 }
 
 function fondos() {
-  img = loadImage("Fondos Forzadas/pared.png");
-  piso = loadImage("Fondos Forzadas/pisodef.png");
-  cir = loadImage("Fondos Forzadas/circulo.png");
-  resor = loadImage("Fondos Forzadas/resorte.png");
-  liquid = loadImage("Fondos Forzadas/gif.gif");
+  img = loadImage("/Fondos M.A.S/pared.png");
+  piso = loadImage("/Fondos M.A.S/pisodef.png");
+  cir = loadImage("/Fondos M.A.S/circulo.png");
+  resor = loadImage("/Fondos M.A.S/prueba.png");
+  liquid = loadImage("/Fondos M.A.S/gif.gif");
+  bg = loadImage("/Fondos M.A.S/background.jpg")
 }
 
 //----------------------------------------------
@@ -89,12 +90,13 @@ function draw() {
 }
 //----------------------------------------------
 function entorno() {
-  background(255);
+  background(bg);
   translate(200, 200);
   image(piso, -380, 368, 1800, 100);
   image(img, -230, 285, 80, 120);
   image(img, 1100, 285, 80, 120);
-  fill(0);
+  fill(255);
+  stroke(255)
   textSize(30);
   text("Simulacion de oscilaciones forzadas ", 230, -160);
   textSize(15);
@@ -108,7 +110,7 @@ function entorno() {
 
 //----------------------------------------------
 function movimientoV2() {
-  x =map(2*t3*cos(5*t-2),-1,1,0,100 );
+  x =map(2*t*cos(5*t-2),-1,1,0,100);
   line(-157, 370, x + 380, 370);
   image(cir, x + 372, 345, 50, 50);
   if (!isNaN(x)) {
