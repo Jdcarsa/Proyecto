@@ -15,7 +15,6 @@ var valorK = 0,
   valorM = 0,
   valorA = 0,
   W0,
-  xc = 0,
   Fase = 0;
 
 function setup() {
@@ -40,9 +39,20 @@ function botonesControl() {
   stop = createButton("Reiniciar");
   stop.position(800, 100);
   stop.mousePressed(() => window.location.reload());
+  check = createCheckbox('Rapido',false);
+  check.position(200, 100);
+  check.changed(cambioTiempo);
+}
+
+function cambioTiempo() {
+  if (checkbox.checked()) {
+    timer = 0.1;
+  } else {
+    timer = 0.05;
+  }
 }
 //----------------------------------------------
-function SliderEntrada() {
+function sliderEntrada() {
   //Creacion de slider de  masa
   entradaM = createSlider(1, 30, 1, 1);
   entradaM.position(140, 180);
