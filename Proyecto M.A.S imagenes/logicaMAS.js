@@ -39,6 +39,17 @@ function botonesControl() {
   stop = createButton("Reiniciar");
   stop.position(800, 100);
   stop.mousePressed(() => window.location.reload());
+  check = createCheckbox('Rapido',false);
+  check.position(200, 100);
+  check.changed(cambioTiempo);
+}
+
+function cambioTiempo() {
+  if (checkbox.checked()) {
+    timer = 0.1;
+  } else {
+    timer = 0.05;
+  }
 }
 //----------------------------------------------
 function sliderEntrada() {
