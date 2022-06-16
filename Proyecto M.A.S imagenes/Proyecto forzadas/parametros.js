@@ -24,8 +24,12 @@ PosSuelo=Ymax-PisoH,
 PisoX=Xmin,
 PisoY=PosSuelo,
 
+ResorW=225,
+ResorH=40,
+
 ResorW=(ResX-(MuroW*2))/2,
 ResorH=40,
+multiplicador=30;
 
 CirL=50,
 z=0;
@@ -33,4 +37,5 @@ z=0;
 bordTxtX=Xmin+200;
 bordTxtY=Ymin+180;
 
-multiplicador=30;
+LiquiW=ResX-MuroW-MuroW;
+LiquiH=80;
